@@ -55,20 +55,6 @@ services:
         ports:
             - "5432:5432"
 
-    client:
-        # Use a static website hosting service in production
-        # See https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#deployment
-        build:
-            context: ./client
-            dockerfile: ./Dockerfile
-        env_file:
-            - ./client/.env
-        volumes:
-            - ./client:/usr/src/client:rw,cached
-            - /usr/src/client/node_modules
-        ports:
-            - "80:3000"
-
     admin:
         # Use a static website hosting service in production
         # See https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#deployment
@@ -89,7 +75,6 @@ services:
             context: ./h2-proxy
             dockerfile: ./Dockerfile
         depends_on:
-            - client
             - admin
             - api
             - cache-proxy
