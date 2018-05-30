@@ -1,0 +1,69 @@
+{
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "php": "^7.1.3",
+        "ext-iconv": "*",
+        "api-platform/api-pack": "^1.1",
+        "gedmo/doctrine-extensions": "^2.4",
+        "guzzlehttp/guzzle": "^6.3",
+        "symfony/console": "^4.0",
+        "symfony/flex": "^1.0",
+        "symfony/framework-bundle": "^4.0",
+        "symfony/lts": "^4@dev",
+        "symfony/swiftmailer-bundle": "^3.2",
+        "symfony/yaml": "^4.0",
+        "webonyx/graphql-php": "^0.11.5"
+    },
+    "require-dev": {
+        "api-platform/schema-generator": "^2.1",
+        "doctrine/data-fixtures": "^1.3",
+        "doctrine/doctrine-fixtures-bundle": "^2.4",
+        "hautelook/alice-bundle": "^2.0",
+        "nelmio/alice": "^3.2",
+        "theofidry/alice-data-fixtures": "^1.0"
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "replace": {
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php71": "*",
+        "symfony/polyfill-php70": "*",
+        "symfony/polyfill-php56": "*"
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install": "symfony-cmd"
+        },
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ]
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "extra": {
+        "symfony": {
+            "id": "01C8WD1HD9J9Y11VR38NBMY133",
+            "allow-contrib": false
+        }
+    }
+}

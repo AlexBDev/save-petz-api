@@ -1,0 +1,39 @@
+App\Entity\Location:
+    location{1..40}:
+        city: <city()>
+        address: <address()>
+        latitude: <latitude()>
+        longitude: <longitude()>
+
+App\Entity\Contact:
+    contact{1..20}:
+        firstname: <firstname()>
+        lastname: <lastname()>
+        phone: <e164PhoneNumber()>
+        location: "@location<current()>"
+
+App\Entity\Pet\PetType:
+    pet_type0:
+        name: "Chien"
+    pet_type1:
+        name: "Chat"
+
+App\Entity\Pet\Pet:
+    pet{1..30}:
+        type: "@pet_type*"
+        name: <userName()>
+        description: <realText()>
+        characteristics:
+            - "80%? <pet_characteristic_value('size')>"
+            - "80%? <pet_characteristic_value('color')>"
+            - "80%? <pet_characteristic_value('necklace')>"
+            - "80%? <pet_characteristic_value('fur')>"
+            - "80%? <pet_characteristic_value('eye')>"
+            - "80%? <pet_characteristic_value('race_dog')>"
+        tatoo: <ean13()>
+        chip: <ean13()>
+        location (unique): "@location*"
+        contact: "@contact*"
+        status: <randomElement([0,1])>
+        created_at: <dateTimeBetween('-6 month', 'now')>
+        updated_at: <dateTime()>
